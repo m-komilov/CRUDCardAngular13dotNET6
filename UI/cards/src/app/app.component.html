@@ -1,0 +1,82 @@
+<div class="container">
+  <h1>Project is starting</h1>
+
+  <div class="cards-container">
+    <div class="cards-form">
+      <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="cardName">Card Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cardName"
+            placeholder="Card Name"
+            [(ngModel)]="card.cardHolderName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cardNumber"
+            placeholder="Card Number"
+            [(ngModel)]="card.cardNumber"
+          />
+        </div>
+
+        <div class="form-group form-group-inline">
+          <div>
+            <label for="cvc">CVC</label>
+            <input
+              type="text"
+              class="form-control"
+              name="cvc"
+              placeholder="CVC"
+              [(ngModel)]="card.cvc"
+            />
+          </div>
+
+          <div>
+            <label for="expiryMonth">Expiry Month</label>
+            <input
+              type="text"
+              class="form-control"
+              name="expiryMonth"
+              placeholder="Expiry Month"
+              [(ngModel)]="card.expiryMonth"
+            />
+          </div>
+
+          <div>
+            <label for="expiryYear">Expiry Year</label>
+            <input
+              type="text"
+              class="form-control"
+              name="expiryYear"
+              placeholder="Expiry Year"
+              [(ngModel)]="card.expiryYear"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Add Card</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card-row" *ngFor="let card of cards">
+        <div (dblclick)="populateForm(card)" class="card-row-details">
+          <span>{{ card.cardHolderName }}</span>
+          <span> {{ card.cardNumber }} </span>
+        </div>
+        <div class="card-row-action">
+          <a (click)="deleteCard(card.id)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
